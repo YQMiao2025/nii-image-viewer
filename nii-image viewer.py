@@ -75,6 +75,7 @@ class ImageViewer:
 
         self.erase_button = tk.Button(left_panel, text="Erase", command=self.start_erase)
         self.erase_button.pack(pady=5)
+        
     def create_view_controls(self):
         control_frame = self.bottom_frame
         labels = ['Axial', 'Coronal', 'Sagittal']
@@ -161,6 +162,7 @@ class ImageViewer:
         for label in self.measure_labels:
             label[0].text(label[1], label[2], label[3], fontsize=12, color='green')
         self.canvas.draw()
+        
     def apply_window_level(self, image_array):
         try:
             self.window_center = float(self.window_center_entry.get())
@@ -289,6 +291,7 @@ class ImageViewer:
         x = [p[0] for p in polygon]
         y = [p[1] for p in polygon]
         return 0.5 * abs(sum(x[i] * y[i - 1] - x[i - 1] * y[i] for i in range(len(polygon))))
+        
     def on_scroll(self, event):
         if event.inaxes in [self.ax1, self.ax2, self.ax3]:
             zoom_in = event.button == 'up'
